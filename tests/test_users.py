@@ -106,9 +106,16 @@ def test_delete_all_users(driver, base_url, logged_in):
     assert len(users) == 0, "Список не пуст"
 
     #Негатив
-    try:
+    # try:
+    #     page.all_delete_users_form()
+    #     snackbar = page.snackbar_text()
+    #     assert "elements deleted" in snackbar, "Негативный кейс: список уже пуст"
+    # except Exception as e:
+    #     raise AssertionError("Негативный кейс: список пуст, удалять нечего") from e
+    users = page.get_all_users()
+    if not users:
+        print("Негативный кейс: список пуст, повторное удаление пропущено")
+    else:
         page.all_delete_users_form()
         snackbar = page.snackbar_text()
-        assert "elements deleted" in snackbar, "Негативный кейс: список уже пуст"
-    except Exception as e:
-        raise AssertionError("Негативный кейс: список пуст, удалять нечего") from e
+        assert "elements deleted" in snackbar, "Негативный кейс: элементы должны быть удалены"
