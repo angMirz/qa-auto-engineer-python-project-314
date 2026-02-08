@@ -6,9 +6,6 @@ start:
 active:
 	source .venv/bin/activate
 
-smoke:
-	uv run pytest -k smoke
-
 one_login:
 	pytest tests/test_login.py::test_login_success_header
 
