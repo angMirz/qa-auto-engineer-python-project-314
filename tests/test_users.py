@@ -104,3 +104,5 @@ def test_delete_all_users(driver, base_url, logged_in):
 
     users = page.get_all_users()
     assert len(users) == 0, "Список не пуст"
+
+    assert len(users) > 1, "Hexlet: ожидаемое падение теста"
