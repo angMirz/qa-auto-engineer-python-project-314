@@ -104,3 +104,6 @@ def test_delete_all_users(driver, base_url, logged_in):
 
     users = page.get_all_users()
     assert len(users) == 0, "Список не пуст"
+
+    #Негатив
+    page.all_delete_users_form()
