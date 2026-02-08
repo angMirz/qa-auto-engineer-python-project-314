@@ -88,8 +88,10 @@ def test_delete_task_form(driver, base_url, created_task):
     page.open_task_from_board_by_name(TEST_TASK["title"])
     page.delete_task_edit_form()
 
-    snackbar_text = page.snackbar_text()
-    assert "Element deleted" in snackbar_text
+    snackbar = WebDriverWait(driver, 5).until(
+        lambda d: "Element deleted" in page.snackbar_text()
+    )
+    assert "Element deleted" in page.snackbar_text()
 
     titles = page.get_all_task(TEST_TASK["status_value"])
     assert TEST_TASK["title"] not in titles, "Задача не удалена"
