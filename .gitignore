@@ -3,7 +3,7 @@
 __pycache__
 dist/
 build/
-
+tests/test_smoke.py
 
 # Virtual environments
 .venv

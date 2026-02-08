@@ -1,4 +1,5 @@
 import pytest
+from selenium.webdriver.support.ui import WebDriverWait
 from pages.label_page import LabelPage
 from test_data.label import TEST_LABEL
 from test_data.upd_label import UPD_TEST_LABEL
@@ -62,7 +63,7 @@ def test_delete_label_form(driver, base_url, created_label):
     snackbar = WebDriverWait(driver, 5).until(
         lambda d: "Element deleted" in page.snackbar_text()
     )
-    assert "Element deleted" in snackbar_text
+    assert "Element deleted" in page.snackbar_text()
 
     status = page.get_all_label()
     assert not any(u["name"] == TEST_LABEL["name"] for u in status), "Метка не удалена"
