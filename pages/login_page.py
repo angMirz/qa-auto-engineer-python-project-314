@@ -7,7 +7,6 @@ class LoginPage(BasePage):
     USERNAME = (By.NAME, "username")
     PASSWORD = (By.NAME, "password")
     SUBMIT = (By.CSS_SELECTOR, "button[type='submit']")
-    # FLASH = (By.ID, "flash")
     
     # Открывает стартовую страницу, base_url передаётся из фикстуры
     def open(self, base_url):
@@ -16,12 +15,6 @@ class LoginPage(BasePage):
 
     def login(self, username, password):
         """Авторизация"""
-        # означает: Selenium найдёт элемент с name="username" и введёт туда username.
-        # Последовательность действий для логина : сначала имя, пароль и кнопка
         self.type(self.USERNAME, username) 
         self.type(self.PASSWORD, password)
         self.click(self.SUBMIT)
-
-    # def message(self):
-    #     """Возвращает текст баннера"""
-    #     return self.text_of(self.FLASH)

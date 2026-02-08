@@ -1,18 +1,3 @@
-# ## Импорт библиотеки для управления браузером
-# from selenium import webdriver
-# import time
-
-# ## Запуск браузера Chrome через драйвер
-# driver = webdriver.Chrome()
-
-# ## Открытие страницы
-# driver.get("https://example.com")
-# #зависаем на 5сек, чтобы увидеть браузер
-# time.sleep(5)
-
-# ## Закрытие браузера и завершение сессии
-# driver.quit()
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
