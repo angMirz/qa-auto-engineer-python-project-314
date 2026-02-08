@@ -1,4 +1,5 @@
 import pytest
+from selenium.webdriver.support.ui import WebDriverWait
 from pages.statuses_page import StatusPage
 from test_data.statuses import TEST_STATUS
 from test_data.upd_statuses import UPD_TEST_STATUS
