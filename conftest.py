@@ -14,7 +14,7 @@ from tests.test_data.tasks import TEST_TASK
 @pytest.fixture(scope="session")
 def base_url():
     """Базовый адрес тестируемого сайта"""
-    return os.getenv("APP_BASE_URL", "http://server:80")
+    return os.getenv("APP_BASE_URL", "http://localhost:5173")
 
 
 @pytest.fixture(scope="function")
