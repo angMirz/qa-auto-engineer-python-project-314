@@ -1,6 +1,9 @@
-from pages.base_table_page import TablePage
-from .locators.labels_locators import LabelLocators
 from selenium.webdriver.common.by import By
+
+from pages.base_table_page import TablePage
+
+from .locators.labels_locators import LabelLocators
+
 
 class LabelPage(TablePage):
     URL = "labels"

@@ -1,10 +1,16 @@
 from selenium.webdriver.common.by import By
 
+
 class TasksLocators:
     CREATE_BUTTON = (By.CSS_SELECTOR, "a[aria-label='Create']")
     SAVE_BUTTON = (By.CSS_SELECTOR, "button[aria-label='Save']")
     DELETE_BUTTON = (By.CSS_SELECTOR, "button[aria-label='Delete']")
-    EDIT_BUTTON = (By.XPATH, "//div[contains(@class,'MuiCard-root') and .//div[contains(@class,'MuiTypography-h5') and text()='Test']]//a[@aria-label='Edit']")
+    EDIT_BUTTON = (
+        By.XPATH,
+        "//div[contains(@class,'MuiCard-root') and "
+        ".//div[contains(@class,'MuiTypography-h5') and text()='Test']]"
+        "//a[@aria-label='Edit']"
+    )
     SNACKBAR = (By.CSS_SELECTOR, ".MuiSnackbarContent-message")
 
     TITLE_INPUT = (By.CSS_SELECTOR, "form input[name='title']")

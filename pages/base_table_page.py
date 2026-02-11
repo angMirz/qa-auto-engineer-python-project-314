@@ -1,10 +1,13 @@
-from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
+
+from pages.base_page import BasePage
+
 
 class TablePage(BasePage):
     """
     Базовый Page Object для страниц с таблицами CRUD (Users, Labels, Statuses)
-    Содержит общие методы: открыть строку, кликнуть создать, сохранить, удалить, дождаться snackbar
+    Содержит общие методы: открыть строку, кликнуть создать, сохранить, удалить 
+    и дождаться snackbar
     """
 
     CREATE_BUTTON = None

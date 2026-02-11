@@ -1,7 +1,8 @@
 from selenium.webdriver.support.ui import WebDriverWait
-from pages.users_page import UsersPage
-from test_data.users import TEST_USER 
 from test_data.upd_users import UPD_TEST_USER
+from test_data.users import TEST_USER
+
+from pages.users_page import UsersPage
 
 
 # Тест создания пользователя
@@ -19,7 +20,9 @@ def test_create_user(driver, base_url, logged_in):
     page.open_page(base_url)
 
     users = page.get_all_users()
-    assert any(u["email"] == TEST_USER["email"] for u in users), "Пользователь не найден в списке!"
+    assert any(
+        u["email"] == TEST_USER["email"] for u in users
+        ), "Пользователь не найден!"
 
 
 # Тест полей пользователя появился в списке
@@ -86,7 +89,9 @@ def test_delete_user_form(driver, base_url, created_user):
     assert "Element deleted" in page.snackbar_text()
 
     users = page.get_all_users()
-    assert not any(u["email"] == TEST_USER["email"] for u in users), "Пользователь не удален"
+    assert not any(
+        u["email"] == TEST_USER["email"] for u in users
+        ), "Пользователь не удален"
 
 
 # Тест на удаление всех пользователей
@@ -103,18 +108,3 @@ def test_delete_all_users(driver, base_url, logged_in):
 
     users = page.get_all_users()
     assert len(users) == 0, "Список не пуст"
-
-    #Негатив
-    # try:
-    #     page.all_delete_users_form()
-    #     snackbar = page.snackbar_text()
-    #     assert "elements deleted" in snackbar, "Негативный кейс: список уже пуст"
-    # except Exception as e:
-    #     raise AssertionError("Негативный кейс: список пуст, удалять нечего") from e
-    # users = page.get_all_users()
-    # if not users:
-    #     print("Негативный кейс: список пуст, повторное удаление пропущено")
-    # else:
-    #     page.all_delete_users_form()
-    #     snackbar = page.snackbar_text()
-    #     assert "elements deleted" in snackbar, "Негативный кейс: элементы должны быть удалены"

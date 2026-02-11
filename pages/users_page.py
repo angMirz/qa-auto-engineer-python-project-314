@@ -1,6 +1,9 @@
-from pages.base_table_page import TablePage
-from .locators.users_locators import UsersLocators
 from selenium.webdriver.common.by import By
+
+from pages.base_table_page import TablePage
+
+from .locators.users_locators import UsersLocators
+
 
 class UsersPage(TablePage):
     URL = "users"
@@ -43,8 +46,12 @@ class UsersPage(TablePage):
         users = []
         for row in self.driver.find_elements(*self.ROWS):
             email = row.find_element(By.CSS_SELECTOR, UsersLocators.EMAIL_CELL).text
-            first_name = row.find_element(By.CSS_SELECTOR, UsersLocators.FIRST_NAME_CELL).text
-            last_name = row.find_element(By.CSS_SELECTOR, UsersLocators.LAST_NAME_CELL).text
+            first_name = row.find_element(
+                By.CSS_SELECTOR, UsersLocators.FIRST_NAME_CELL
+                ).text
+            last_name = row.find_element(
+                By.CSS_SELECTOR, UsersLocators.LAST_NAME_CELL
+                ).text
             users.append({
                 "email": email,
                 "first_name": first_name,

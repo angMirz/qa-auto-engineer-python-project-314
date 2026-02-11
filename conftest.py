@@ -1,16 +1,20 @@
 import os
+
 import pytest
 from selenium import webdriver
-from pages.login_page import LoginPage
-from pages.users_page import UsersPage
-from pages.statuses_page import StatusPage
-from pages.label_page import LabelPage
-from pages.tasks_page import TaskPage
 from selenium.webdriver.chrome.options import Options
-from tests.test_data.users import TEST_USER
-from tests.test_data.statuses import TEST_STATUS
+
+from pages.label_page import LabelPage
+from pages.login_page import LoginPage
+from pages.statuses_page import StatusPage
+from pages.tasks_page import TaskPage
+from pages.users_page import UsersPage
 from tests.test_data.label import TEST_LABEL
+from tests.test_data.login import TEST_AUTH
+from tests.test_data.statuses import TEST_STATUS
 from tests.test_data.tasks import TEST_TASK
+from tests.test_data.users import TEST_USER
+
 
 @pytest.fixture(scope="session")
 def base_url():
@@ -43,14 +47,18 @@ def logged_in(driver, base_url):
     driver.delete_all_cookies()
     page = LoginPage(driver)   
     page.open(base_url)   
-    page.login("test", "SecretPassword")
-    yield driver
+    page.login(        
+        TEST_AUTH["username"],
+        TEST_AUTH["password"]
+        )
+    yield page
 
 @pytest.fixture
 def created_user(driver, logged_in, base_url):
     page = UsersPage(driver)
     page.open_page(base_url)
-    page.create_user(TEST_USER["first_name"], TEST_USER["last_name"], TEST_USER["email"])
+    page.create_user(
+        TEST_USER["first_name"], TEST_USER["last_name"], TEST_USER["email"])
 
     yield TEST_USER
 

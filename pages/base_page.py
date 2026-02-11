@@ -1,7 +1,6 @@
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class BasePage:
@@ -35,7 +34,9 @@ class BasePage:
         self.click_js(dropdown)
 
         # найти нужную опцию
-        option_locator = (By.XPATH, f"//ul[@role='listbox']//li[normalize-space(.)='{value}']")
+        option_locator = (
+            By.XPATH, f"//ul[@role='listbox']//li[normalize-space(.)='{value}']"
+            )
         option = self.driver.find_element(*option_locator)
 
         # клик по опции через JS
@@ -48,7 +49,9 @@ class BasePage:
         el.click()
 
         self.driver.execute_script("arguments[0].value = '';", el)
-        self.driver.execute_script("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", el)
+        self.driver.execute_script(
+            "arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", el
+            )
 
         el.send_keys(text)
 

@@ -9,3 +9,19 @@ dependencies = [
     "pytest>=9.0.2",
     "selenium>=4.40.0",
 ]
+
+[tool.ruff]
+# Игнорируем виртуальные окружения и кэш
+exclude = ["venv", ".venv", "build", "__pycache__"]
+
+line-length = 88
+
+# Включаем группы ошибок: 
+# E — PEP8, F — Pyflakes, I — импорты
+select = ["E", "F", "I"]
+
+# Игнорируем ошибки, которые часто всплывают в твоем проекте
+ignore = [
+    "E401",  # Multiple imports on one line
+    "F841",  # Local variable assigned but never used
+]

@@ -1,8 +1,10 @@
-from pages.base_page import BasePage
-from .locators.tasks_locators import TasksLocators
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+from pages.base_page import BasePage
+
+from .locators.tasks_locators import TasksLocators
 
 
 class TaskPage(BasePage):
@@ -100,5 +102,7 @@ class TaskPage(BasePage):
 
 
     def delete_task_edit_form(self):
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(self.SNACKBAR))
+        WebDriverWait(self.driver, 10).until(
+            EC.invisibility_of_element_located(self.SNACKBAR)
+            )
         self.click(self.DELETE_BUTTON)

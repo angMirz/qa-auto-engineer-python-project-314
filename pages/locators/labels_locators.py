@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 
+
 class LabelLocators:
     CREATE_BUTTON = (By.CSS_SELECTOR, "a[aria-label='Create']")
     NAME_INPUT = (By.CSS_SELECTOR, "form input[name='name']")

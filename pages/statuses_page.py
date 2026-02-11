@@ -1,6 +1,9 @@
-from pages.base_table_page import TablePage
-from .locators.statuses_locators import StatusLocators
 from selenium.webdriver.common.by import By
+
+from pages.base_table_page import TablePage
+
+from .locators.statuses_locators import StatusLocators
+
 
 class StatusPage(TablePage):
     URL = "task_statuses"

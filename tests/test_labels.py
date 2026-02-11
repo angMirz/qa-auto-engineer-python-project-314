@@ -1,7 +1,8 @@
 from selenium.webdriver.support.ui import WebDriverWait
-from pages.label_page import LabelPage
 from test_data.label import TEST_LABEL
 from test_data.upd_label import UPD_TEST_LABEL
+
+from pages.label_page import LabelPage
 
 
     # Тест создания метки
