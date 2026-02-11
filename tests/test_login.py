@@ -2,9 +2,6 @@ from selenium.webdriver.common.by import By
 
 from pages.login_page import LoginPage
 
-# def test_login_success_url(logged_in):
-#     page = logged_in
-#     assert "/login" not in page.driver.current_url
     
 def test_login_success(logged_in):
     page = logged_in

@@ -30,17 +30,6 @@ class LoginPage(BasePage):
         self.type(self.PASSWORD, password)
         self.click(self.SUBMIT)
 
-    # --- Проверка авторизации ---
-    # def is_logged_in(self):
-    #     """Проверяет, залогинен ли пользователь"""
-    #     try:
-    #         WebDriverWait(self.driver, 10).until(
-    #             EC.visibility_of_element_located(self.HEADER)
-    #         )
-    #         return True
-    #     except:
-    #         return False
-
     def is_logged_in(self):
         try:
             WebDriverWait(self.driver, 10).until(
