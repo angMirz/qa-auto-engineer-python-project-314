@@ -1,4 +1,5 @@
-import os, pytest
+import os
+import pytest
 from selenium import webdriver
 from pages.login_page import LoginPage
 from pages.users_page import UsersPage

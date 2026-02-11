@@ -1,4 +1,3 @@
-import pytest
 from selenium.webdriver.support.ui import WebDriverWait
 from pages.statuses_page import StatusPage
 from test_data.statuses import TEST_STATUS
@@ -66,10 +65,10 @@ def test_delete_status_form(driver, base_url, created_status):
 
     page.delete_status_edit_form()
 
-    snackbar = WebDriverWait(driver, 5).until(
-        lambda d: "Element deleted" in page.snackbar_text()
+    snackbar_text = WebDriverWait(driver, 5).until(
+        lambda d: page.snackbar_text()
     )
-    assert "Element deleted" in page.snackbar_text()
+    assert "Element deleted" in snackbar_text
 
     status = page.get_all_statuses()
     assert not any(u["slug"] == TEST_STATUS["slug"] for u in status), "Статус не удален"
@@ -82,7 +81,7 @@ def test_delete_all_status(driver, base_url, logged_in):
 
     page.all_delete_status_form()
 
-    snackbar = WebDriverWait(driver, 5).until(
+    WebDriverWait(driver, 5).until(
         lambda d: "elements deleted" in page.snackbar_text()
     )
     assert "elements deleted" in page.snackbar_text()

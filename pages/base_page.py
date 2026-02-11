@@ -1,6 +1,5 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
 
@@ -67,4 +66,4 @@ class BasePage:
 
 
     def wait_for_snackbar_to_disappear(self, locator):
-        el = self.wait.until(EC.invisibility_of_element_located(locator))
+        self.wait.until(EC.invisibility_of_element_located(locator))
