@@ -65,10 +65,10 @@ def test_delete_status_form(driver, base_url, created_status):
 
     page.delete_status_edit_form()
 
-    snackbar_text = WebDriverWait(driver, 5).until(
-        lambda d: page.snackbar_text()
+    WebDriverWait(driver, 5).until(
+        lambda d: "Element deleted" in page.snackbar_text()
     )
-    assert "Element deleted" in snackbar_text
+    assert "Element deleted" in page.snackbar_text()
 
     status = page.get_all_statuses()
     assert not any(u["slug"] == TEST_STATUS["slug"] for u in status), "Статус не удален"

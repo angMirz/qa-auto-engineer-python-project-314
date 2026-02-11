@@ -80,10 +80,10 @@ def test_delete_user_form(driver, base_url, created_user):
 
     page.delete_user_edit_form()
 
-    snackbar_text = WebDriverWait(driver, 5).until(
-        lambda d: page.snackbar_text()
+    WebDriverWait(driver, 5).until(
+        lambda d: "Element deleted" in page.snackbar_text()
     )
-    assert "Element deleted" in snackbar_text
+    assert "Element deleted" in page.snackbar_text()
 
     users = page.get_all_users()
     assert not any(u["email"] == TEST_USER["email"] for u in users), "Пользователь не удален"
@@ -96,7 +96,7 @@ def test_delete_all_users(driver, base_url, logged_in):
 
     page.all_delete_users_form()
 
-    snackbar = WebDriverWait(driver, 5).until(
+    WebDriverWait(driver, 5).until(
         lambda d: "elements deleted" in page.snackbar_text()
     )
     assert "elements deleted" in page.snackbar_text()
