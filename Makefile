@@ -1,35 +1,55 @@
-.PHONY: start
+.PHONY: install start stop test
 
+install:
+	uv sync
+
+# Запуск приложения
 start:
-	docker run --rm -p 5173:5173 hexletprojects/qa_auto_python_testing_kanban_board_project_ru_app
+	docker run --rm --name hexlet-app -p 5173:5173 hexletprojects/qa_auto_python_testing_kanban_board_project_ru_app
 
-active:
-	source .venv/bin/activate
+# Остановка приложения
+stop:
+	docker stop hexlet-app
 
-one_login:
-	pytest tests/test_login.py::test_login_success_header
+# Запуск тестов
+test:
+	uv run pytest
 
-two_login:
-	pytest tests/test_login.py::test_login_success_url
 
-login:
-	pytest tests/test_login.py
 
-logout:
-	pytest tests/test_logout.py
 
-users:
-	pytest tests/test_users.py
+# .PHONY: start
 
-statuses:
-	pytest tests/test_statuses.py
+# start:
+# 	docker run --rm -p 5173:5173 hexletprojects/qa_auto_python_testing_kanban_board_project_ru_app
 
-labels:
-	pytest tests/test_labels.py
+# active:
+# 	source .venv/bin/activate
 
-tasks:
-	pytest tests/test_tasks.py
+# one_login:
+# 	pytest tests/test_login.py::test_login_success_header
 
-tasks_filters:
-	pytest tests/test_tasks.py::test_view_task_list
+# two_login:
+# 	pytest tests/test_login.py::test_login_success_url
+
+# login:
+# 	pytest tests/test_login.py
+
+# logout:
+# 	pytest tests/test_logout.py
+
+# users:
+# 	pytest tests/test_users.py
+
+# statuses:
+# 	pytest tests/test_statuses.py
+
+# labels:
+# 	pytest tests/test_labels.py
+
+# tasks:
+# 	pytest tests/test_tasks.py
+
+# tasks_filters:
+# 	pytest tests/test_tasks.py::test_view_task_list
 
